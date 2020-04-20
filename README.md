@@ -31,6 +31,7 @@ Track worker entry times and duration of time spent between gates.
 ## Queries
 
 **GROUP BY WINDOW OF TIME** 
+
     SELECT
         workerId,
         Count(*) AS Count
@@ -43,6 +44,7 @@ Track worker entry times and duration of time spent between gates.
 	
 	
 **GET FIRST IN WINDOW for EACH workerId at each gate**
+
     SELECT
         workerId,
         gateId,
