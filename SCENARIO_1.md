@@ -37,7 +37,7 @@ Time spent in the area between each gate must also be tracked. Once we have a ti
 | "f3eb9b98-cd24-429d-b11d-20c73cfdf6a8" | "2" | "2020-04-20T16:42:25.9528915Z" |"2020-04-20T16:51:46.3526125Z" | 7 | "2020-04-20T16:47:40.1360000Z" |
 ...
 
-## Queries
+## Query 1
 
 **GROUP BY WINDOW OF TIME** 
 
@@ -63,7 +63,7 @@ Time spent in the area between each gate must also be tracked. Once we have a ti
 | "f3eb9b98-cd24-429d-b11d-20c73cfdf6a8" | "2" | "2020-04-20T16:46:37.2017680Z" |
 | "f3eb9b98-cd24-429d-b11d-20c73cfdf6a8" | "3" | "2020-04-20T16:47:39.5618751Z" |
 
-	
+## Query 2
 	
 **GET FIRST IN WINDOW for EACH workerId at EACH gate**
 
