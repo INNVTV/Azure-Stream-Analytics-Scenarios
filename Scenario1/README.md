@@ -26,7 +26,7 @@ Time spent in the area between each gate must also be tracked. Once we have a ti
         timeEntered = DateTime.UtcNow
     };
 
-**Sample Data**	
+**Sample Data (Use event producer project to generate entire set)**	
 
 
 | workerId | gateId | timeEntered | EventProcessedUtcTime | PartitionId | EventEnqueuedUtcTime |
@@ -39,7 +39,7 @@ Time spent in the area between each gate must also be tracked. Once we have a ti
 
 ## Query 1
 
-**GROUP BY WINDOW OF TIME** 
+**Count of sensor readings for each worker within a window of time** 
 
     SELECT
         workerId,
@@ -53,19 +53,17 @@ Time spent in the area between each gate must also be tracked. Once we have a ti
 		
 **OUTPUT**
 
-| workerId | gateId | timeEntered |
+| workerId | count |
 | ------------- | ------------- | ------------- |
-| "43081665-c402-476a-b5b5-fe62da967a53" | "3" | "2020-04-20T16:47:41.9777414Z" |
-| "1d1d040c-7a78-4ca8-ba6d-64f898513005" | "1" | "2020-04-20T16:46:43.5349608Z" |
-| "f3eb9b98-cd24-429d-b11d-20c73cfdf6a8" | "1" | "2020-04-20T16:42:26.2056277Z" |
-| "43081665-c402-476a-b5b5-fe62da967a53" | "1" | "2020-04-20T16:42:25.9528915Z" |
-| "43081665-c402-476a-b5b5-fe62da967a53" | "2" | "2020-04-20T16:46:36.6014477Z" |
-| "f3eb9b98-cd24-429d-b11d-20c73cfdf6a8" | "2" | "2020-04-20T16:46:37.2017680Z" |
-| "f3eb9b98-cd24-429d-b11d-20c73cfdf6a8" | "3" | "2020-04-20T16:47:39.5618751Z" |
+| "43081665-c402-476a-b5b5-fe62da967a53" | "88" | 
+| "1d1d040c-7a78-4ca8-ba6d-64f898513005" | "45" | 
+| "f3eb9b98-cd24-429d-b11d-20c73cfdf6a8" | "48" | 
+
 
 ## Query 2
 	
-**GET FIRST IN WINDOW for EACH workerId at EACH gate**
+**Get first sensor reading for each workerId at each gate within a time window**
+This is likely the query that will be used to populate a storage account in order to have a function pull and calculate duration between gate readings for each worker.
 
     SELECT
         workerId,
@@ -79,3 +77,41 @@ Time spent in the area between each gate must also be tracked. Once we have a ti
         IsFirst(minute, 10) OVER (PARTITION By workerId, gateId) = 1
 	
 **OUTPUT**
+
+| workerId | gateId | timeEntered |
+| ------------- | ------------- | ------------- |
+| "43081665-c402-476a-b5b5-fe62da967a53" | "3" | "2020-04-20T16:47:41.9777414Z" |
+| "1d1d040c-7a78-4ca8-ba6d-64f898513005" | "1" | "2020-04-20T16:46:43.5349608Z" |
+| "f3eb9b98-cd24-429d-b11d-20c73cfdf6a8" | "1" | "2020-04-20T16:42:26.2056277Z" |
+| "43081665-c402-476a-b5b5-fe62da967a53" | "1" | "2020-04-20T16:42:25.9528915Z" |
+| "43081665-c402-476a-b5b5-fe62da967a53" | "2" | "2020-04-20T16:46:36.6014477Z" |
+| "f3eb9b98-cd24-429d-b11d-20c73cfdf6a8" | "2" | "2020-04-20T16:46:37.2017680Z" |
+| "f3eb9b98-cd24-429d-b11d-20c73cfdf6a8" | "3" | "2020-04-20T16:47:39.5618751Z" |
+
+## Query 3
+	
+**Get first sensor reading for a particular worker at each gate within a time window**
+
+
+    SELECT
+        workerId,
+        gateId,
+        timeEntered
+    INTO
+        TableStore
+    FROM
+        GatesInput
+    WHERE
+        IsFirst(minute, 10) OVER (PARTITION By workerId, gateId) = 1 and workerId = 'f3eb9b98-cd24-429d-b11d-20c73cfdf6a8'
+	
+**OUTPUT**
+
+| workerId | gateId | timeEntered |
+| ------------- | ------------- | ------------- |
+| "f3eb9b98-cd24-429d-b11d-20c73cfdf6a8" | "1" | "2020-04-20T16:42:26.2056277Z" |
+| "f3eb9b98-cd24-429d-b11d-20c73cfdf6a8" | "2" | "2020-04-20T16:46:37.2017680Z" |
+| "f3eb9b98-cd24-429d-b11d-20c73cfdf6a8" | "3" | "2020-04-20T16:47:39.5618751Z" |
+
+
+
+
