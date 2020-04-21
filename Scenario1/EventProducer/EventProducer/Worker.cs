@@ -38,7 +38,7 @@ namespace EventProducer
                     // Create multiple event batches simulating 3 workers.
                     //=======================================================
                     // Worker 1 and 2 enter through gate 1 around the same time. Spend about 4-5 minutes in the room.
-                    // Worker one passes through gate 2 as Worker 3 passes through gate 1.
+                    // Worker 1 passes through gate 2 as Worker 3 passes through gate 1.
                     // Worker 2 then enters gate 2.
                     // Finally Worker 1 passes through gate 3.
                     // Entire simulation occurs within a 5-6 minute window then restarts again after a 5 min delay.

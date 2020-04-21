@@ -1,4 +1,5 @@
 # Azure Stream Analytics
+![Header](https://github.com/INNVTV/Azure-Stream-Analytics-Scenarios/blob/master/images/header.jpg)
 Various scenarios showcasing EventHub data, Azure Stream Analytics queries and output.
 
 ## Event Producer
