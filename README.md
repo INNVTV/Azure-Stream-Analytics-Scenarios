@@ -1,11 +1,11 @@
 # Azure Stream Analytics
 ![Header](https://github.com/INNVTV/Azure-Stream-Analytics-Scenarios/blob/master/images/header.jpg)
-Various scenarios showcasing EventHub data, Azure Stream Analytics queries and output.
+Various scenarios showcasing EventHub data with associated Azure Stream Analytics queries and output.
 
 [View Query Docs](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-stream-analytics-query-patterns)
 
-## Event Producer
-Each scenario has an associated producer project you can use to send events to your EventHub instance.
+## Event Producer & Stream Analytics Solutions
+Each scenario has an associated Event Producer project you can use to send events to your EventHub instance as well as a Visual Studio solution for managing ASA queries and CI/CD Pipelines (Where applicable).
 	
 ## Scenario 1
 

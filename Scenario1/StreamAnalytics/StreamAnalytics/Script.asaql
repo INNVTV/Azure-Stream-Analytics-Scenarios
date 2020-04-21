@@ -1,0 +1,10 @@
+﻿    SELECT
+        workerId,
+        gateId,
+        timeEntered
+    INTO
+        TableStore
+    FROM
+        GatesInput
+    WHERE
+        IsFirst(minute, 10) OVER (PARTITION By workerId, gateId) = 1

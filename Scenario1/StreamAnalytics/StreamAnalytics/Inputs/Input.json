@@ -1,0 +1,30 @@
+﻿{
+  "Sample": "{\"workerId\":\"f50551d5-8d1e-4e8a-86c3-fd45f8656881\",\"gateId\":\"1\",\"timeEntered\":\"2020-04-21T15:41:55.3839538Z\"}",
+  "EventHubProperties": {
+    "ConsumerGroupName": "$Default",
+    "EventHubName": "gates",
+    "ServiceBusNamespace": "blttest",
+    "SharedAccessPolicyKey": null,
+    "SharedAccessPolicyName": "RootManageSharedAccessKey"
+  },
+  "BlobStorageProperties": null,
+  "IoTHubProperties": null,
+  "BlobReferenceProperties": null,
+  "SqlReferenceInputInfo": null,
+  "InputPartionKey": null,
+  "DataSourceCredentialDomain": "9d89d409-c1b5-45f4-ae4e-90faf98c684c.StreamAnalyticsCredential",
+  "Name": "GatesInput",
+  "Type": "Data Stream",
+  "DataSourceType": "Event Hub",
+  "Serialization": {
+    "Encoding": "UTF8",
+    "Type": "Json",
+    "FieldDelimiter": null,
+    "Format": null,
+    "SerializationDllPath": null,
+    "SerializationClassName": null,
+    "SerializationDllPathInLocal": null
+  },
+  "CompresssionType": "None",
+  "ScriptType": "Input"
+}

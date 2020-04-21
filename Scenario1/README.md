@@ -37,30 +37,9 @@ Time spent in the area between each gate must also be tracked. Once we have a ti
 | "f3eb9b98-cd24-429d-b11d-20c73cfdf6a8" | "2" | "2020-04-20T16:42:25.9528915Z" |"2020-04-20T16:51:46.3526125Z" | 7 | "2020-04-20T16:47:40.1360000Z" |
 ...
 
+
+
 ## Query 1
-
-**Count of sensor readings for each worker within a window of time** 
-
-    SELECT
-        workerId,
-        Count(*) AS Count
-    INTO
-        TableStore
-    FROM
-        GatesInput
-    GROUP BY
-        workerId,TumblingWindow(second, 5)
-		
-**OUTPUT**
-
-| workerId | count |
-| ------------- | ------------- |
-| "43081665-c402-476a-b5b5-fe62da967a53" | "88" | 
-| "1d1d040c-7a78-4ca8-ba6d-64f898513005" | "45" | 
-| "f3eb9b98-cd24-429d-b11d-20c73cfdf6a8" | "48" | 
-
-
-## Query 2
 	
 **Get first sensor reading for each workerId at each gate within a time window**
 This is likely the query that will be used to populate a storage account in order to have a function pull and calculate duration between gate readings for each worker.
@@ -88,7 +67,7 @@ This is likely the query that will be used to populate a storage account in orde
 | "f3eb9b98-cd24-429d-b11d-20c73cfdf6a8" | "2" | "2020-04-20T16:46:37.2017680Z" |
 | "f3eb9b98-cd24-429d-b11d-20c73cfdf6a8" | "3" | "2020-04-20T16:47:39.5618751Z" |
 
-## Query 3
+## Query 2
 	
 **Get first sensor reading for a particular worker at each gate within a time window**
 
@@ -113,5 +92,26 @@ This is likely the query that will be used to populate a storage account in orde
 | "f3eb9b98-cd24-429d-b11d-20c73cfdf6a8" | "3" | "2020-04-20T16:47:39.5618751Z" |
 
 
+## Query 3
+
+**Count of sensor readings for each worker within a window of time** 
+
+    SELECT
+        workerId,
+        Count(*) AS Count
+    INTO
+        TableStore
+    FROM
+        GatesInput
+    GROUP BY
+        workerId,TumblingWindow(second, 5)
+		
+**OUTPUT**
+
+| workerId | count |
+| ------------- | ------------- |
+| "43081665-c402-476a-b5b5-fe62da967a53" | "88" | 
+| "1d1d040c-7a78-4ca8-ba6d-64f898513005" | "45" | 
+| "f3eb9b98-cd24-429d-b11d-20c73cfdf6a8" | "48" | 
 
 
