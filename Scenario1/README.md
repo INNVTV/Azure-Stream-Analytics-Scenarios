@@ -1,5 +1,5 @@
 # Scenario 1
-Multiple entrance gates firing events as workers pass through.
+A series of low frequency readers set up at entrances and exits (gates) to rooms in a medical treatment center. Since the Covid-19 outbreak the facility wants to track times it is taking for staff to suit up as they enter the facility as well as overall exposure times (time spent within the facility).
 
 ## Goals
 Track worker entry times and duration of time spent between gates.
@@ -8,11 +8,11 @@ Track worker entry times and duration of time spent between gates.
 
 **Gate entry**
 
-The gate devices will fire multiple times per worker as they pass through the readers. Data analysis should focus on getting a single point in time as the time the worker passed through each gate.
+The gate devices will fire multiple times per worker as they pass through the readers. Data analysis should focus on getting a single point in time from the aggregate and use this to maerk the time that the worker passed through each gate.
 
 **Duration between gates**
 
-Time spent in the area between each gate must also be tracked. Once we have a timestamp for entry between gate-1 and gate-2 for a worker we must find the timespan between each of those markers.
+Time spent in the area between each gate must also be tracked. Once we have a timestamp for entry between gate-1, gate-2 f, etc.  we must find the timespan between each of those markers.
 
 
 ## Event Data
