@@ -54,7 +54,7 @@ Time spent in the area between each gate must also be tracked. Once we have a ti
 **OUTPUT**
 
 | workerId | count |
-| ------------- | ------------- | ------------- |
+| ------------- | ------------- |
 | "43081665-c402-476a-b5b5-fe62da967a53" | "88" | 
 | "1d1d040c-7a78-4ca8-ba6d-64f898513005" | "45" | 
 | "f3eb9b98-cd24-429d-b11d-20c73cfdf6a8" | "48" | 
