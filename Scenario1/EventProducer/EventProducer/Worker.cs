@@ -14,7 +14,7 @@ namespace EventProducer
 {
     public class Worker : BackgroundService
     {
-        // Create a SEND only key under "Shared acces policies" on the root hub namespace
+        // Create a SEND only key under "Shared access policies" on the root hub namespace
         private string connectionString;
         private string eventHubName = "gates"; //<-- One of the many hubs created under the root namespace
 
@@ -34,7 +34,15 @@ namespace EventProducer
                 // Create a producer client that you can use to send events to an event hub
                 await using (var producerClient = new EventHubProducerClient(connectionString, eventHubName))
                 {
-                    // Create a batch of events
+                    //====================================================
+                    // Create multiple event batches simulating 3 workers.
+                    //=======================================================
+                    // Worker 1 and 2 enter through gate 1 around the same time. Spend about 4-5 minutes in the room.
+                    // Worker one passes through gate 2 as Worker 3 passes through gate 1.
+                    // Worker 2 then enters gate 2.
+                    // Finally Worker 1 passes through gate 3.
+                    // Entire simulation occurs within a 5-6 minute window then restarts again after a 5 min delay.
+
                     var options = new CreateBatchOptions();
                     //options.PartitionId = "3";//<--- Event Hubs will ensure this batch goes to the same partition (You are specifying the exact id)
                     //options.PartitionKey = "123";//<--- Event Hubs will ensure this batch goes to the same partition based on hash (EH will decide) RECOMMENDED BY MICROSOFT.
@@ -45,15 +53,15 @@ namespace EventProducer
                     var worker1Id = Guid.NewGuid();
                     var worker2Id = Guid.NewGuid();
                     var worker3Id = Guid.NewGuid();
-                    var worker4Id = Guid.NewGuid();
-                    var worker5Id = Guid.NewGuid();
-                    var worker6Id = Guid.NewGuid();
+                    ///var worker4Id = Guid.NewGuid();
+                    ///var worker5Id = Guid.NewGuid();
+                    ///var worker6Id = Guid.NewGuid();
 
                     var gate1 = "1";
                     var gate2 = "2";
                     var gate3 = "3";
-                    var gate4 = "4";
-                    var gate5 = "5";
+                    //var gate4 = "4";
+                    //var gate5 = "5";
 
                     var telemetryDataPoint = new
                     {

@@ -19,7 +19,7 @@ Time spent in the area between each gate must also be tracked. Once we have a ti
 
 **C# Model**
 
-    var event = new
+    var telemetryDataPoint = new
     {
         workerId = worker1Id,
         gateId = gateId,
