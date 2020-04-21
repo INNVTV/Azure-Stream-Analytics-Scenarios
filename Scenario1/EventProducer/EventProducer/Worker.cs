@@ -12,8 +12,6 @@ using System.Text;
 
 namespace EventProducer
 {
-
-
     public class Worker : BackgroundService
     {
         // Create a SEND only key under "Shared acces policies" on the root hub namespace
@@ -147,6 +145,7 @@ namespace EventProducer
                     #endregion
                     Console.WriteLine("Workers 1 and 2 pass through gate 1");
 
+                    // 4-5 minutes pass as they are in room 1
                     await Task.Delay(250000);
 
                     #region Worker 1 Walks Through Gate 2
