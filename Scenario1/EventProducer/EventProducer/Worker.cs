@@ -151,7 +151,7 @@ namespace EventProducer
                     await producerClient.SendAsync(eventBatch);
 
                     #endregion
-                    Console.WriteLine("Workers 1 and 2 pass through gate 1");
+                    Console.WriteLine("Workers 1 and 2 have passed through gate 1");
 
                     // 4-5 minutes pass as they are in room 1
                     await Task.Delay(250000);
@@ -256,7 +256,7 @@ namespace EventProducer
                     await producerClient.SendAsync(eventBatch);
 
                     #endregion
-                    Console.WriteLine("Worker 1 passes through gate 2");
+                    Console.WriteLine("Worker 1 has passed through gate 2");
 
                     await Task.Delay(2000);
 
@@ -361,7 +361,7 @@ namespace EventProducer
                     await producerClient.SendAsync(eventBatch);
 
                     #endregion
-                    Console.WriteLine("Worker 3 passes through gate 1");
+                    Console.WriteLine("Worker 3 has passed through gate 1");
 
                     await Task.Delay(20000);
 
@@ -466,7 +466,7 @@ namespace EventProducer
                     await producerClient.SendAsync(eventBatch);
 
                     #endregion
-                    Console.WriteLine("Worker 2 passes through gate 2");
+                    Console.WriteLine("Worker 2 has passed through gate 2");
                     await Task.Delay(30000);
 
                     #region Worker 1 Walks Through Gate 3
@@ -501,7 +501,7 @@ namespace EventProducer
                     await Task.Delay(250);
                     telemetryDataPoint = new
                     {
-                        workerId = worker2Id,
+                        workerId = worker1Id,
                         gateId = gate3,
                         timeEntered = DateTime.UtcNow
                     };
@@ -566,7 +566,7 @@ namespace EventProducer
                     await producerClient.SendAsync(eventBatch);
 
                     #endregion
-                    Console.WriteLine("Worker 1 passes through gate 3");
+                    Console.WriteLine("Worker 1 has passed through gate 3");
 
                     #endregion
 
